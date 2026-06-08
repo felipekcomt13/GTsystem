@@ -1,0 +1,282 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 222 47% 11%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
+
+    --sidebar: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-accent: 217 91% 60%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 222 25% 22%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html,
+  body {
+    @apply h-full;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+}
+
+/* ---------- FullCalendar — branded styles ---------- */
+.gts-calendar .fc {
+  --fc-border-color: hsl(var(--border));
+  --fc-page-bg-color: hsl(var(--card));
+  --fc-neutral-bg-color: hsl(var(--muted));
+  --fc-today-bg-color: hsl(217 91% 60% / 0.05);
+  --fc-now-indicator-color: #ef4444;
+  --fc-button-bg-color: hsl(var(--card));
+  --fc-button-border-color: hsl(var(--border));
+  --fc-button-text-color: hsl(var(--foreground));
+  --fc-button-hover-bg-color: hsl(var(--muted));
+  --fc-button-hover-border-color: hsl(var(--border));
+  --fc-button-active-bg-color: hsl(var(--primary));
+  --fc-button-active-border-color: hsl(var(--primary));
+  font-family: inherit;
+}
+
+/* Toolbar */
+.gts-calendar .fc .fc-toolbar.fc-header-toolbar {
+  margin-bottom: 1.25rem;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.gts-calendar .fc .fc-toolbar-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: -0.01em;
+  color: hsl(var(--foreground));
+}
+
+.gts-calendar .fc .fc-button {
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  box-shadow: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.gts-calendar .fc .fc-button:focus {
+  box-shadow: 0 0 0 2px hsl(var(--accent) / 0.25);
+}
+
+.gts-calendar .fc .fc-button-primary:not(:disabled).fc-button-active,
+.gts-calendar .fc .fc-button-primary:not(:disabled):active {
+  color: #fff;
+}
+
+.gts-calendar .fc .fc-button-group > .fc-button {
+  border-radius: 0;
+}
+.gts-calendar .fc .fc-button-group > .fc-button:first-child {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.gts-calendar .fc .fc-button-group > .fc-button:last-child {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+/* Frame & scroller */
+.gts-calendar .fc .fc-scrollgrid {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border-color: hsl(var(--border));
+}
+
+.gts-calendar .fc .fc-scrollgrid-section > * {
+  border-color: hsl(var(--border));
+}
+
+.gts-calendar .fc-theme-standard td,
+.gts-calendar .fc-theme-standard th {
+  border-color: hsl(var(--border));
+}
+
+/* Column headers (day names + numbers) */
+.gts-calendar .fc .fc-col-header {
+  background-color: hsl(var(--muted) / 0.4);
+}
+
+.gts-calendar .fc .fc-col-header-cell {
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.gts-calendar .fc .fc-col-header-cell-cushion {
+  padding: 0.5rem 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Today column highlight */
+.gts-calendar .fc .fc-day-today {
+  background-color: hsl(217 91% 60% / 0.04) !important;
+}
+
+.gts-calendar .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+  border-radius: 9999px;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px;
+  font-weight: 600;
+}
+
+.gts-calendar .fc .fc-daygrid-day-number {
+  padding: 0.5rem 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: hsl(var(--foreground));
+  text-decoration: none;
+}
+
+/* TimeGrid: hour axis on the left */
+.gts-calendar .fc .fc-timegrid-axis {
+  border-right: 1px solid hsl(var(--border));
+  background-color: hsl(var(--muted) / 0.3);
+}
+
+.gts-calendar .fc .fc-timegrid-axis-cushion,
+.gts-calendar .fc .fc-timegrid-slot-label-cushion {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: hsl(var(--muted-foreground));
+  padding: 0 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.gts-calendar .fc .fc-timegrid-slot {
+  height: 2.5rem;
+}
+
+.gts-calendar .fc .fc-timegrid-slot-minor {
+  border-top-style: dotted;
+  border-top-color: hsl(var(--border) / 0.7);
+}
+
+.gts-calendar .fc .fc-timegrid-col-frame {
+  background-image: linear-gradient(
+    to bottom,
+    transparent calc(2.5rem - 1px),
+    hsl(var(--border) / 0.5) 2.5rem
+  );
+}
+
+.gts-calendar .fc .fc-timegrid-now-indicator-line {
+  border-color: #ef4444;
+  border-width: 2px;
+}
+
+.gts-calendar .fc .fc-timegrid-now-indicator-arrow {
+  border-color: #ef4444;
+  border-width: 5px;
+}
+
+/* Day grid (month view) cells */
+.gts-calendar .fc .fc-daygrid-day-frame {
+  min-height: 6rem;
+  transition: background-color 0.15s ease;
+}
+.gts-calendar .fc .fc-daygrid-day-frame:hover {
+  background-color: hsl(var(--muted) / 0.4);
+}
+
+/* Events */
+.gts-calendar .fc-event {
+  border-radius: 0.5rem;
+  padding: 3px 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-left-width: 3px !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.gts-calendar .fc-event:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08);
+}
+
+.gts-calendar .fc .fc-timegrid-event .fc-event-main {
+  padding: 2px 4px;
+}
+
+.gts-calendar .fc .fc-timegrid-event .fc-event-time {
+  font-weight: 600;
+  font-size: 0.7rem;
+  opacity: 0.85;
+}
+
+.gts-calendar .fc .fc-timegrid-event .fc-event-title {
+  font-weight: 600;
+  white-space: normal;
+  line-height: 1.2;
+}
+
+/* Selection highlight */
+.gts-calendar .fc .fc-highlight {
+  background-color: hsl(var(--accent) / 0.18);
+}
+
+/* Scrollbar polish (WebKit) */
+.gts-calendar .fc .fc-scroller::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.gts-calendar .fc .fc-scroller::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--border));
+  border-radius: 4px;
+}
+.gts-calendar .fc .fc-scroller::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--muted-foreground) / 0.5);
+}
